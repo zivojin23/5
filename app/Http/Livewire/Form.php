@@ -22,28 +22,23 @@ class Form extends Component
     public $project_person;
     public $attachment;
 
-    // public $search = '';
-
-    public $user_id;
     public $project_id;
-    
 
-    protected $rules = [
-        'first_name'        => 'required',
-        'last_name'         => 'required',
-        'email'             => 'required|email',
-        'project_name'      => 'required',
-        'project_priority'  => 'required',
-        'project_status'    => 'required',
-        'project_person'    => 'required|email',
-        'attachment'        => 'required',
+    // protected $rules = [
+    //     'first_name'        => 'required',
+    //     'last_name'         => 'required',
+    //     'email'             => 'required|email',
+    //     'project_name'      => 'required',
+    //     'project_priority'  => 'required',
+    //     'project_status'    => 'required',
+    //     'project_person'    => 'required|email',
+    //     'attachment'        => 'required',
         
-    ];
+    // ];
 
-// SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE 
     public function saveProject()
     {
-        $this->validate();
+        
 
         if (Auth::user()) {
             
@@ -51,6 +46,18 @@ class Form extends Component
             $this->last_name   = Auth::user()->last_name;
             $this->email       = Auth::user()->email;
         }
+
+        $this->validate([
+            'first_name'        => 'required',
+            'last_name'         => 'required',
+            'email'             => 'required|email',
+            'project_name'      => 'required',
+            'project_priority'  => 'required',
+            'project_status'    => 'required',
+            'project_person'    => 'required|email',
+            'attachment'        => 'required',
+            
+        ]);
 
         Project::create([
             'first_name'       => $this->first_name,
@@ -65,37 +72,60 @@ class Form extends Component
  
         ]);
 
+        
         session()->flash('submitted', 'Submitted!');
 
         $this->reset(['first_name','last_name','email', 'project_name', 'project_priority', 'project_status', 'project_person', 'attachment']);
-        $this->dispatchBrowserEvent('close-modal');
-    }
-// SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE  // SAVE 
-
-    public function closeModal()
-    {
-        $this->resetInput();
     }
 
-// DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  
-    public function deleteProject($project_id)
+    public function editProject($project_id)
     {
-        $this->project_id = $project_id;
+    
+        dd('asd');
+        // $project = Project::findOrFail($project_id);
+
+        // $this->project_id       = $project->id;
+
+        // $this->first_name       = $project->first_name;
+        // $this->last_name        = $project->last_name;
+        // $this->email            = $project->email;
+        // $this->project_name     = $project->project_name;
+        // $this->project_priority = $project->project_priority;
+        // $this->project_status   = $project->project_status;
+        // $this->project_person   = $project->project_person;
+
     }
 
-    public function removeProject()
+    public function updateProject()
     {
-        Project::find($this->project_id)->delete();
-        
-        session()->flash('deleted', 'deleted!');
-        $this->dispatchBrowserEvent('close-modal');
+
+
+        dd('asd');
+        // $this->validate([
+        //     'project_priority'  => 'required',
+        //     'project_status'    => 'required',
+        //     'project_person'    => 'required|email',
+        // ]);
+
+            // $this->validate();
+
+            // 'first_name' => $this->first_name,
+            // 'last_name' => $this->last_name,
+            // 'email' => $this->email,
+            // 'project_name' => $this->project_name,
+
+
+        //     Project::where('id', $this->project_id)->update([
+        //         'project_priority'  => $this->project_priority,
+        //         'project_status'    => $this->project_status,
+        //         'project_person'    => $this->project_person
+        //     ]);
+
+        // session()->flash('updated', 'Updated!');
     }
-// DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  // DELETE  
 
     public function render()
     {
-        $this->projects = Project::orderBy('updated_at', 'desc')->get();
-
-        return view('livewire.main');
+        return view('livewire.form');
     }
 }

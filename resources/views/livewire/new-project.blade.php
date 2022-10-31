@@ -1,11 +1,12 @@
 <div class="w-3/5 mx-auto">
 
     <form wire:submit.prevent="saveProject">
-    
+        @csrf
+        
             <div class="flex flex-col w-4/5 mx-auto my-8">
                 <label for="first_name" class="mb-2 mt-10 text-sm font-medium">First Name</label>
                 <input class="shadow p-2.5 text-sm rounded-lg bg-gray-50 border border-gray-300" 
-                    wire:model="first_name" id="first_name" type="text" placeholder="Your First Name">  
+                    wire:model="first_name" id="first_name" type="text" placeholder="Your First Name" >  
                 @error('first_name')<span class="text-danger">{{ $message }}</span>@enderror
             </div>
 
@@ -77,7 +78,7 @@
 
         <div class="p-5 flex justify-end">
             <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
-                wire:click.prevent="saveProject()">Submit<i class="fa-solid fa-check ml-5"></i></button>
+                wire:click.prevent="saveProject()" type="submit">Submit<i class="fa-solid fa-check ml-5"></i></button>
         </div>
     </form>
 </div>
