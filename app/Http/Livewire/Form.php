@@ -24,17 +24,19 @@ class Form extends Component
 
     public $project_id;
 
-    // protected $rules = [
-    //     'first_name'        => 'required',
-    //     'last_name'         => 'required',
-    //     'email'             => 'required|email',
-    //     'project_name'      => 'required',
-    //     'project_priority'  => 'required',
-    //     'project_status'    => 'required',
-    //     'project_person'    => 'required|email',
-    //     'attachment'        => 'required',
+    // public $updateProject = false;
+
+    protected $rules = [
+        'first_name'        => 'required',
+        'last_name'         => 'required',
+        'email'             => 'required|email',
+        'project_name'      => 'required',
+        'project_priority'  => 'required',
+        'project_status'    => 'required',
+        'project_person'    => 'required|email',
+        'attachment'        => 'required',
         
-    // ];
+    ];
 
     public function saveProject()
     {
@@ -78,50 +80,74 @@ class Form extends Component
         $this->reset(['first_name','last_name','email', 'project_name', 'project_priority', 'project_status', 'project_person', 'attachment']);
     }
 
-    public function editProject($project_id)
-    {
+    // public function editProject($project_id)
+    // {
     
-        dd('asd');
-        // $project = Project::findOrFail($project_id);
+        
+    //     $project = Project::findOrFail($project_id);
 
-        // $this->project_id       = $project->id;
+    //     $this->project_id       = $project->id;
 
-        // $this->first_name       = $project->first_name;
-        // $this->last_name        = $project->last_name;
-        // $this->email            = $project->email;
-        // $this->project_name     = $project->project_name;
-        // $this->project_priority = $project->project_priority;
-        // $this->project_status   = $project->project_status;
-        // $this->project_person   = $project->project_person;
+    //     $this->project_priority = $project->project_priority;
+    //     $this->project_status   = $project->project_status;
+    //     $this->project_person   = $project->project_person;
 
-    }
+    //     // $this->updateForm = true;
+
+    // }
+
+    // public function updateProject()
+    // {
+
+
+        
+    //     $this->validateOnly([
+    //         'project_priority'  => 'required',
+    //         'project_status'    => 'required',
+    //         'project_person'    => 'required|email',
+    //     ]);
+
+    //         // $this->validate();
+
+    //         // 'first_name' => $this->first_name,
+    //         // 'last_name' => $this->last_name,
+    //         // 'email' => $this->email,
+    //         // 'project_name' => $this->project_name,
+
+
+    //         Project::where('id', $this->project_id)->update([
+    //             'project_priority'  => $this->project_priority,
+    //             'project_status'    => $this->project_status,
+    //             'project_person'    => $this->project_person
+    //         ]);
+
+    //     session()->flash('updated', 'Updated!');
+    // }
 
     public function updateProject()
     {
+        $this->validate();
 
-
-        dd('asd');
         // $this->validate([
         //     'project_priority'  => 'required',
         //     'project_status'    => 'required',
         //     'project_person'    => 'required|email',
         // ]);
 
-            // $this->validate();
+        Project::where('id', $this->project_id)->update([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'project_name' => $this->project_name,
+            'project_priority' => $this->project_priority,
+            'project_status' => $this->project_status,
+            'project_person' => $this->project_person
+        ])->save();
 
-            // 'first_name' => $this->first_name,
-            // 'last_name' => $this->last_name,
-            // 'email' => $this->email,
-            // 'project_name' => $this->project_name,
+        session()->flash('updated', 'Updated!');
 
+        // $this->reset(['first_name','last_name','email', 'project_name', 'project_priority', 'project_status', 'project_person']);
 
-        //     Project::where('id', $this->project_id)->update([
-        //         'project_priority'  => $this->project_priority,
-        //         'project_status'    => $this->project_status,
-        //         'project_person'    => $this->project_person
-        //     ]);
-
-        // session()->flash('updated', 'Updated!');
     }
 
     public function render()
