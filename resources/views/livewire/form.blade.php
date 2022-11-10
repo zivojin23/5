@@ -33,8 +33,8 @@
 
 {{-- DESNO --}}
 <div class="mt-10">
-    {{-- @include('livewire.all-projects') --}}
-    svi projekti
+    @include('livewire.all-projects')
+    {{-- svi projekti --}}
 </div>
 
 </div>

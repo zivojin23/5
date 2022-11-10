@@ -35,13 +35,16 @@ class Form extends Component
         'project_status'    => 'required',
         'project_person'    => 'required|email',
         'attachment'        => 'required',
-        
     ];
+
+    public function mount()
+    {
+        $this->projects = Project::orderBy('updated_at', 'desc')->get();
+    }
 
     public function saveProject()
     {
-        
-
+    
         if (Auth::user()) {
             
             $this->first_name  = Auth::user()->first_name;
@@ -73,81 +76,27 @@ class Form extends Component
             'user_id'          => Auth::id()
  
         ]);
-
-        
+  
         session()->flash('submitted', 'Submitted!');
 
         $this->reset(['first_name','last_name','email', 'project_name', 'project_priority', 'project_status', 'project_person', 'attachment']);
     }
 
-    // public function editProject($project_id)
-    // {
-    
-        
-    //     $project = Project::findOrFail($project_id);
-
-    //     $this->project_id       = $project->id;
-
-    //     $this->project_priority = $project->project_priority;
-    //     $this->project_status   = $project->project_status;
-    //     $this->project_person   = $project->project_person;
-
-    //     // $this->updateForm = true;
-
-    // }
-
-    // public function updateProject()
-    // {
-
-
-        
-    //     $this->validateOnly([
-    //         'project_priority'  => 'required',
-    //         'project_status'    => 'required',
-    //         'project_person'    => 'required|email',
-    //     ]);
-
-    //         // $this->validate();
-
-    //         // 'first_name' => $this->first_name,
-    //         // 'last_name' => $this->last_name,
-    //         // 'email' => $this->email,
-    //         // 'project_name' => $this->project_name,
-
-
-    //         Project::where('id', $this->project_id)->update([
-    //             'project_priority'  => $this->project_priority,
-    //             'project_status'    => $this->project_status,
-    //             'project_person'    => $this->project_person
-    //         ]);
-
-    //     session()->flash('updated', 'Updated!');
-    // }
-
     public function updateProject()
     {
         $this->validate();
 
-        // $this->validate([
-        //     'project_priority'  => 'required',
-        //     'project_status'    => 'required',
-        //     'project_person'    => 'required|email',
-        // ]);
-
         Project::where('id', $this->project_id)->update([
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email' => $this->email,
-            'project_name' => $this->project_name,
-            'project_priority' => $this->project_priority,
-            'project_status' => $this->project_status,
-            'project_person' => $this->project_person
+            'first_name'        => $this->first_name,
+            'last_name'         => $this->last_name,
+            'email'             => $this->email,
+            'project_name'      => $this->project_name,
+            'project_priority'  => $this->project_priority,
+            'project_status'    => $this->project_status,
+            'project_person'    => $this->project_person
         ])->save();
 
         session()->flash('updated', 'Updated!');
-
-        // $this->reset(['first_name','last_name','email', 'project_name', 'project_priority', 'project_status', 'project_person']);
-
     }
 
     public function render()

@@ -34,7 +34,7 @@
         </div>
     </nav> --}}
     
-    <div class="w-2/5 mx-auto">
+    <div class="w-3/5 mx-auto">
         @if (session()->has('deleted'))
         <div class="bg-green-100 p-4 flex justify-center rounded-lg w-full mx-auto">
             <div class="font-bold text-xl text-green-700">
@@ -253,6 +253,7 @@
     </div>
 </div>  --}}
 
+
     
                 </div>
     
@@ -260,3 +261,129 @@
         </div>    
         {{-- @endforeach --}}
 </div>
+
+
+{{-- <div class="flex flex-col">
+    <div class="my-2 overflow-x-auto sm:mx-6 lg:mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="table-head">Title</th>
+                            <th class="table-head">Link</th>
+                            <th class="table-head">email</th>
+                            <th class="table-head"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @if ($projects->count())
+                            @foreach ($projects as $project)
+                                <tr>
+                                    <td class="table-data">
+                                        {{ $project->first_name }}
+                                   
+                                    </td>
+                                    <td class="table-data">
+                                            {{ $project->last_name }}
+                                        </a>
+                                    </td>
+                                    <td class="table-data">{{ $project->email }}</td>
+                                    <td class="table-data flex justify-end gap-2">
+                                        <button wire:click="updateShowModal({{ $project->id }})">
+                                            {{ __('Edit') }}
+                                        </button>
+                                        <button wire:click="deleteShowModal({{ $project->id }})">
+                                            {{ __('Delete') }}
+                                            </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td class="table-data" colspan="4">No Results Found</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+   {{-- Modal Form --}}
+   {{-- <x-dialog-modal wire:model="modalFormVisible"> --}}
+    {{-- <x-slot name="title">
+        {{ __('Save Page') }} {{ $modelId }}
+    </x-slot>
+
+    <x-slot name="content">
+        <div class="mt-4">
+            <x-jet-label for="title" value="{{ __('Title') }}" />
+            <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title"
+                wire:model.debounce.500ms="title" />
+            @error('title')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="mt-4">
+            <x-jet-label for="slug" value="{{ __('Slug') }}" />
+            <div class="mt-1 flex rounded-md shadow-sm">
+                <span
+                    class="inline-flex items-center px-3 rounded-l-md border border-r-0 py-3 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    http://localhost:8000/
+                </span>
+                <input wire:model.lazy="slug"
+                    class="form-input flex-1 block w-full pl-1 rounded-none border rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    placeholder="url-slug">
+            </div>
+            @error('slug')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="mt-4">
+            <label>
+                <input class="form-checkbox" type="checkbox" value="{{ $isDefaultHome }}"
+                    wire:model="isDefaultHome">
+                <span class="ml-2 text-sm text-gray-600">Set as the default home page</span>
+            </label>
+        </div>
+        <div class="mt-4">
+            <label>
+                <input class="form-checkbox" type="checkbox" value="{{ $isDefault404 }}"
+                    wire:model="isDefault404">
+                <span class="ml-2 text-sm text-red-600">Set as the default 404 error page</span>
+            </label>
+        </div>
+        <div class="mt-4">
+            <x-jet-label for="title" value="{{ __('Content') }}" />
+            <div class="rounded-md shadow-sm">
+                <div class="mt-1 bg-white">
+                    <div class="body-content" wire:ignore>
+                        <trix-editor class="trix-content" x-ref="trix" wire:model.debounce.500ms="content"
+                            wire:key="trix-content-unique-key"></trix-editor>
+                    </div>
+                </div>
+            </div>
+            @error('content')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            {{ __('Cancel') }}
+        </x-jet-secondary-button>
+
+        @if ($modelId)
+            <x-jet-danger-button class="ml-3" wire:click="update" wire:loading.attr="disabled">
+                {{ __('Update') }}
+            </x-jet-danger-button>
+        @else
+            <x-jet-danger-button class="ml-3" wire:click="create" wire:loading.attr="disabled">
+                {{ __('Create') }}
+            </x-jet-danger-button>
+        @endif
+    </x-slot> --}}
+{{-- </x-dialog-modal> --}}

@@ -17,8 +17,15 @@ class HomeController extends Controller
     }
 
     public function myprojects()
-        {
+    {
         return view('my-projects', [
+            'user'  => Auth::user(),
+        ]);
+    }
+
+    public function employees()
+    {
+        return view('employees', [
             'user'  => Auth::user(),
         ]);
     }

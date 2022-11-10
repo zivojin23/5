@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/my-projects', [HomeController::class, 'myprojects'])->name('my-projects');
+Route::get('/employees', [HomeController::class, 'employees'])->name('employees');
 
 Route::get('/login', function () { return view('auth.login'); });
 Route::get('/register', function () { return view('auth.register'); });
