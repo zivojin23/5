@@ -14,6 +14,7 @@ class EmployeesComponent extends Component
     public $phone_number;
 
     public $employees;
+    public $employee_id;
 
     public $updateEmployee = false;
 
@@ -32,13 +33,7 @@ class EmployeesComponent extends Component
 
     public function storeEmployee()
     {
-        $this->validate([
-            'first_name'        => 'required',
-            'last_name'         => 'required',
-            'email'             => 'required|email',
-            'date_of_birth'     => 'required',
-            'phone_number'      => 'required|numeric',    
-        ]);
+        $this->validate();
 
         Employee::create([
             'first_name'       => $this->first_name,
@@ -48,9 +43,9 @@ class EmployeesComponent extends Component
             'phone_number'     => $this->phone_number
         ]);
 
-        session()->flash('submitted', 'Submitted!');
-
         $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number']);
+
+        session()->flash('submitted', 'Submitted!');
     }
 
     public function editEmployee($id)
@@ -68,6 +63,24 @@ class EmployeesComponent extends Component
         $this->updateEmployee = true;
     }
 
+    public function updateEmployee()
+    {
+        $this->validate();
+
+        Employee::find($this->employee_id)->update([
+            'first_name'        => $this->first_name,
+            'last_name'         => $this->last_name,
+            'email'             => $this->email,
+            'date_of_birth'     => $this->date_of_birth,
+            'phone_number'      => $this->phone_number
+        ]);
+
+        $this->updateEmployee = false;
+        $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number']);
+
+        session()->flash('updated', 'Updated!');
+    }
+
     public function deleteEmployee($id)
     {
         Employee::findOrFail($id)->delete();
@@ -78,6 +91,7 @@ class EmployeesComponent extends Component
     public function cancel()
     {
         $this->updateEmployee = false;
+        $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number']);
     }
 
     public function render()

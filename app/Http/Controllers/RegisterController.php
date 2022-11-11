@@ -13,16 +13,16 @@ class RegisterController extends Controller
     {
         $request->validate([
             'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required'
+            'last_name'  => 'required',
+            'email'      => 'required|email|unique:users',
+            'password'   => 'required'
         ]);
 
         $user = User::create([
             'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'password'   => Hash::make($request->password)
         ]);
 
         Auth::login($user);

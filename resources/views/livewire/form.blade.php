@@ -1,10 +1,5 @@
 <div>
 
-
-
-
-
-
 <div class="w-2/5 mx-auto">
     @if (session()->has('submitted'))
         <div class="bg-green-100 p-4 flex justify-center rounded-lg w-full mx-auto">
@@ -34,7 +29,6 @@
 {{-- DESNO --}}
 <div class="mt-10">
     @include('livewire.all-projects')
-    {{-- svi projekti --}}
 </div>
 
 </div>

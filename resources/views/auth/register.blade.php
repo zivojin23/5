@@ -17,10 +17,10 @@
     </div>
 
     @if(Session::has('success'))
-    <div class="text-green-500 flex justify-center items-center">{{ Session::get('success') }}</div>
+        <div class="text-green-500 flex justify-center items-center">{{ Session::get('success') }}</div>
     @endif
     @if(Session::has('fail'))
-    <div class="text-red-500 flex justify-center items-center">{{ Session::get('fail') }}</div>
+        <div class="text-red-500 flex justify-center items-center">{{ Session::get('fail') }}</div>
     @endif
 
     <div class="flex flex-col w-1/5 mx-auto my-8">
@@ -57,7 +57,7 @@
 
     <div class="flex justify-center items-center w-1/5 mx-auto my-10">
         <a class="hover:underline hover:text-blue-500" href="login">Already have an account? Login here</a>
-        <button class="w-3/5 bg-white hover:bg-red-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" type="submit">Register</button>
+        <button class="w-3/5 bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" type="submit">Register</button>
     </div>
         
 </form>
