@@ -73,7 +73,9 @@
                     <td class="py-4 px-6">{{ $employee->date_of_birth }}</td>
                     <td class="py-4 px-6">{{ $employee->phone_number }}</td>
                     {{-- {{ $employee->role_id->role_name }} --}}
-                        
+                        {{-- @foreach ($roles as $role)
+                            <td class="py-4 px-6">{{ $role->role_name }}</td>
+                        @endforeach --}}
                     {{-- @endforeach --}}
                     <td class="py-4 px-6">{{ $employee->role_id }}</td>
                     {{-- <td class="py-4 px-6">{{ $role->role_name }}</td> --}}

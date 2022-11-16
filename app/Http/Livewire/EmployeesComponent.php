@@ -65,6 +65,7 @@ class EmployeesComponent extends Component
         $this->email            = $employee->email;
         $this->date_of_birth    = $employee->date_of_birth;
         $this->phone_number     = $employee->phone_number;
+        $this->role_id          = $employee->role_id;
 
         $this->updateEmployee = true;
     }
