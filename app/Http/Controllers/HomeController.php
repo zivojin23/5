@@ -29,4 +29,11 @@ class HomeController extends Controller
             'user'  => Auth::user(),
         ]);
     }
+
+    public function roles()
+    {
+        return view('roles', [
+            'user'  => Auth::user(),
+        ]);
+    }
 }

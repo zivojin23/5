@@ -42,6 +42,11 @@
 <div class="mx-auto mt-10">
         
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+
+    <div class="flex justify-center items-center mb-10">
+        <a href="/salary">Salary</a>
+    </div>
+
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
@@ -51,6 +56,7 @@
                     <th scope="col" class="py-3 px-6">Email</th>
                     <th scope="col" class="py-3 px-6">Date of Birth</th>
                     <th scope="col" class="py-3 px-6">Phone Number</th>
+                    <th scope="col" class="py-3 px-6">Role ID</th>
                     <th scope="col" class="py-3 px-6"><span class="sr-only"></span></th>
                     <th scope="col" class="py-3 px-6"><span class="sr-only"></span></th>
                 </tr>
@@ -66,6 +72,15 @@
                     <td class="py-4 px-6">{{ $employee->email }}</td>
                     <td class="py-4 px-6">{{ $employee->date_of_birth }}</td>
                     <td class="py-4 px-6">{{ $employee->phone_number }}</td>
+                    {{-- {{ $employee->role_id->role_name }} --}}
+                        
+                    {{-- @endforeach --}}
+                    <td class="py-4 px-6">{{ $employee->role_id }}</td>
+                    {{-- <td class="py-4 px-6">{{ $role->role_name }}</td> --}}
+
+                        {{-- <option value="{{ $role->id }}">{{ $role->role_name }}</option> --}}
+                                            {{-- <td class="py-4 px-6">{{ $employee->role_id }}</td> --}}
+                    {{-- @endforeach --}}
                     <td class="py-4 px-6 text-right">
                         <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
                                 wire:click="editEmployee({{ $employee->id }})">Edit</button>   
@@ -79,6 +94,7 @@
                 @endforeach
             </tbody>
         </table>
+        
     </div>
 </div>
 </div>

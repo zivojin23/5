@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Employee;
+use App\Models\Role;
 
 class EmployeesComponent extends Component
 {
@@ -13,6 +14,9 @@ class EmployeesComponent extends Component
     public $date_of_birth;
     public $phone_number;
 
+    // public $roles;
+    public $role_name;
+    public $role_id = '';
     public $employees;
     public $employee_id;
 
@@ -23,12 +27,13 @@ class EmployeesComponent extends Component
         'last_name'         => 'required',
         'email'             => 'required|email', 
         'date_of_birth'     => 'required',
-        'phone_number'      => 'required|numeric',   
+        'phone_number'      => 'required',
+        'role_id'           => 'required'
     ];
 
     public function mount()
     {
-        $this->employees = Employee::orderBy('updated_at', 'desc')->get();
+        $this->employees = Employee::all();
     }
 
     public function storeEmployee()
@@ -40,10 +45,11 @@ class EmployeesComponent extends Component
             'last_name'        => $this->last_name,
             'email'            => $this->email,
             'date_of_birth'    => $this->date_of_birth,
-            'phone_number'     => $this->phone_number
+            'phone_number'     => $this->phone_number,
+            'role_id'          => $this->role_id
         ]);
 
-        $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number']);
+        $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number', 'role_id']);
 
         session()->flash('submitted', 'Submitted!');
     }
@@ -96,6 +102,9 @@ class EmployeesComponent extends Component
 
     public function render()
     {
-        return view('livewire.employees-component');
+        
+        return view('livewire.employees-component', [
+            'roles' => Role::all()
+        ]);
     }
 }

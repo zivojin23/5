@@ -15,5 +15,6 @@ class Employee extends Model
         'email',
         'date_of_birth',
         'phone_number',
+        'role_id'
     ];
 }

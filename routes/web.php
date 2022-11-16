@@ -18,13 +18,13 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
+Route::get('/salary', function () { return view('salary'); })->middleware('auth')->name('salary');
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/my-projects', [HomeController::class, 'myprojects'])->middleware('auth')->name('my-projects');
-Route::get('/employees', [HomeController::class, 'employees'])->name('employees');
+Route::get('/employees', [HomeController::class, 'employees'])->middleware('auth')->name('employees');
+Route::get('/roles', [HomeController::class, 'roles'])->middleware('auth')->name('roles');
 
 Route::get('/login', function () { return view('auth.login'); });
 Route::get('/register', function () { return view('auth.register'); });

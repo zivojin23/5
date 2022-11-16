@@ -71,7 +71,8 @@
                         <p class="py-2 ml-3">{{ $project->project_priority }}</p>
                         <p class="py-2 ml-3">{{ $project->project_status }}</p>
                         <p class="py-2 ml-3">{{ $project->project_person }}</p>
-                        <a class="flex items-center py-2 ml-3 hover:text-blue-600 hover:underline" target="_blank" href="{{ Storage::Url($project->attachment) }}">View</a>               
+                        <a class="flex items-center py-2 ml-3 hover:text-blue-600 hover:underline" target="_blank" 
+                            href="{{ Storage::Url($project->attachment) }}">View</a>               
                     </div>
                 </div>
 
