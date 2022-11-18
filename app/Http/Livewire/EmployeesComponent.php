@@ -31,10 +31,10 @@ class EmployeesComponent extends Component
         'role_id'           => 'required'
     ];
 
-    public function mount()
-    {
-        $this->employees = Employee::all();
-    }
+    // public function mount()
+    // {
+    //     $this->employees = Employee::find('role_id')->with('role')->get();
+    // }
 
     public function storeEmployee()
     {
@@ -67,7 +67,7 @@ class EmployeesComponent extends Component
         $this->phone_number     = $employee->phone_number;
         $this->role_id          = $employee->role_id;
 
-        $this->updateEmployee = true;
+        $this->updateEmployee   = true;
     }
 
     public function updateEmployee()
@@ -101,11 +101,23 @@ class EmployeesComponent extends Component
         $this->reset(['first_name','last_name','email', 'date_of_birth', 'phone_number']);
     }
 
+    // public function showRoleName()
+    // {
+    //     $this->roles = Employee::where('role_id', '2')-with('role')->get();
+    // }
+
     public function render()
     {
-        
-        return view('livewire.employees-component', [
-            'roles' => Role::all()
-        ]);
+        // , [
+        //     'roles' => Role::where('role_id', '1')->with('role')->get()
+        // ]
+
+        // $role_name = Employee::where('role_id', '1')->with('role')->get();
+
+        $this->roles = Role::get();
+
+        $this->employees = Employee::with('role')->get();
+
+        return view('livewire.employees-component', compact('roles', 'employees'));
     }
 }

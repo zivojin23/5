@@ -72,12 +72,25 @@
                     <td class="py-4 px-6">{{ $employee->email }}</td>
                     <td class="py-4 px-6">{{ $employee->date_of_birth }}</td>
                     <td class="py-4 px-6">{{ $employee->phone_number }}</td>
+                    {{-- @forelse ($employee->role_id as $role)
+                        {{ $role['role_name'] }}
+                    @empty
+                        no
+                    @endforelse --}}
+                    {{-- @foreach ($role_name as $role)
+                        {{ $employee->role_id }}
+                    @endforeach --}}
+
+                        {{ $role_name }}
+
+                    <td class="py-4 px-6">{{ $employee->role_id }}</td>
+
                     {{-- {{ $employee->role_id->role_name }} --}}
                         {{-- @foreach ($roles as $role)
                             <td class="py-4 px-6">{{ $role->role_name }}</td>
                         @endforeach --}}
                     {{-- @endforeach --}}
-                    <td class="py-4 px-6">{{ $employee->role_id }}</td>
+                    {{-- <td class="py-4 px-6">{{ $employee->role_id }}</td> --}}
                     {{-- <td class="py-4 px-6">{{ $role->role_name }}</td> --}}
 
                         {{-- <option value="{{ $role->id }}">{{ $role->role_name }}</option> --}}

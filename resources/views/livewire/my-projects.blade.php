@@ -29,14 +29,14 @@
 <div class="w-3/5 mx-auto">
 
 <div class="mb-10">
-    @if ($updateProject)
+    {{-- @if ($updateProject)
         @include('livewire.edit-project')
-    @endif
+    @endif --}}
 </div>
 
     @foreach (Auth::user()->projects as $project)
 
-    <div id="accordion-collapse" data-accordion="collapse">
+    <div id="accordion-collapse" data-accordion="collapse" wire:key="{{ $project->id }}">
         <h2 id="accordion-collapse-heading-{{ $project->id }}">
             <button type="button" class="w-4/5 mx-auto flex items-center justify-between p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100" 
                     data-accordion-target="#accordion-collapse-body-{{ $project->id }}" aria-expanded="true" aria-controls="accordion-collapse-body-{{ $project->id }}">
@@ -68,7 +68,26 @@
                         <p class="py-2 ml-3">{{ $project->last_name }}</p>
                         <p class="py-2 ml-3">{{ $project->email }}</p>
                         <p class="py-2 ml-3">{{ $project->project_name }}</p>
-                        <p class="py-2 ml-3">{{ $project->project_priority }}</p>
+
+
+                        <p class="py-2 ml-3">
+                    @if ($updateProject)
+                        <select class="shadow p-2.5 text-sm rounded-lg bg-gray-50 border border-gray-300" 
+                                wire:model="project_priority" id="project_priority" name="project_priority">
+                            <option value="" disabled>Please select one</option>
+                            <option value="LOW">Low</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="HIGH">High</option>
+                        </select>
+                    @else
+                        {{ $project->project_priority }}
+                    @endif
+                           
+                        </p>
+
+
+
+
                         <p class="py-2 ml-3">{{ $project->project_status }}</p>
                         <p class="py-2 ml-3">{{ $project->project_person }}</p>
                         <a class="flex items-center py-2 ml-3 hover:text-blue-600 hover:underline" target="_blank" 
@@ -83,11 +102,20 @@
 
                     <div class="p-3 flex flex-col">
 
-                        <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 mb-8 border border-gray-400 rounded-lg shadow" 
-                                wire:click="editProject({{ $project->id }})">Edit<i class="fa-sharp fa-solid fa-pen ml-5"></i></button>
+                        @if ($updateProject)
+                            <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow"
+                                    wire:click.prevent="cancel()" type="button">Cancel</button>           
+                                
+                            <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
+                                    wire:click.prevent="updateProject()" type="submit">Update<i class="fa-solid fa-check ml-5"></i></button>
+                        @else
+                            <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 mb-8 border border-gray-400 rounded-lg shadow" 
+                                    wire:click="editProject({{ $project->id }})">Edit<i class="fa-sharp fa-solid fa-pen ml-5"></i></button>
 
-                        <button class="bg-white hover:bg-red-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
-                                wire:click="deleteProject({{ $project->id }})">Delete<i class="fa-solid fa-trash ml-5"></i></button>
+                            <button class="bg-white hover:bg-red-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
+                                    wire:click="deleteProject({{ $project->id }})">Delete<i class="fa-solid fa-trash ml-5"></i></button>
+                        @endif
+                        
 
                     </div>  
 

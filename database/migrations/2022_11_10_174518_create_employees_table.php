@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->date('date_of_birth');
             $table->string('phone_number');
-            $table->foreignId('role_id')->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->constrained();
             $table->timestamps();
         });
     }
