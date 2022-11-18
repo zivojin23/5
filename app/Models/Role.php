@@ -15,8 +15,8 @@ class Role extends Model
         'reports_to'
     ];
 
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
+    // public function employee()
+    // {
+    //     return $this->belongsTo(Employee::class);
+    // }
 }

@@ -31,10 +31,10 @@ class EmployeesComponent extends Component
         'role_id'           => 'required'
     ];
 
-    // public function mount()
-    // {
-    //     $this->employees = Employee::find('role_id')->with('role')->get();
-    // }
+    public function mount()
+    {
+        $this->employees = Employee::get();
+    }
 
     public function storeEmployee()
     {
@@ -56,18 +56,23 @@ class EmployeesComponent extends Component
 
     public function editEmployee($id)
     {
-        $employee = Employee::findOrFail($id);
 
-        $this->employee_id      = $employee->id;
+        $collection = Employee::where('role_id', 1)->with('role')->get();
+
+        dd($collection->toJson(JSON_PRETTY_PRINT));
+
+        // $employee = Employee::findOrFail($id);
+
+        // $this->employee_id      = $employee->id;
         
-        $this->first_name       = $employee->first_name;
-        $this->last_name        = $employee->last_name;
-        $this->email            = $employee->email;
-        $this->date_of_birth    = $employee->date_of_birth;
-        $this->phone_number     = $employee->phone_number;
-        $this->role_id          = $employee->role_id;
+        // $this->first_name       = $employee->first_name;
+        // $this->last_name        = $employee->last_name;
+        // $this->email            = $employee->email;
+        // $this->date_of_birth    = $employee->date_of_birth;
+        // $this->phone_number     = $employee->phone_number;
+        // $this->role_id          = $employee->role_id;
 
-        $this->updateEmployee   = true;
+        // $this->updateEmployee   = true;
     }
 
     public function updateEmployee()
@@ -114,10 +119,11 @@ class EmployeesComponent extends Component
 
         // $role_name = Employee::where('role_id', '1')->with('role')->get();
 
-        $this->roles = Role::get();
 
-        $this->employees = Employee::with('role')->get();
+        // $this->employees = Employee::with('role')->get();
 
-        return view('livewire.employees-component', compact('roles', 'employees'));
+        return view('livewire.employees-component', [
+            'roles' => Role::get()
+        ]);
     }
 }
