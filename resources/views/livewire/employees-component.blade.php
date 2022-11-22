@@ -56,7 +56,7 @@
                     <th scope="col" class="py-3 px-6">Email</th>
                     <th scope="col" class="py-3 px-6">Date of Birth</th>
                     <th scope="col" class="py-3 px-6">Phone Number</th>
-                    <th scope="col" class="py-3 px-6">Role ID</th>
+                    <th scope="col" class="py-3 px-6">Role Name</th>
                     <th scope="col" class="py-3 px-6"><span class="sr-only"></span></th>
                     <th scope="col" class="py-3 px-6"><span class="sr-only"></span></th>
                 </tr>
@@ -72,13 +72,7 @@
                     <td class="py-4 px-6">{{ $employee->email }}</td>
                     <td class="py-4 px-6">{{ $employee->date_of_birth }}</td>
                     <td class="py-4 px-6">{{ $employee->phone_number }}</td>
-                    
-                    
-                    
                     <td class="py-4 px-6">{{ $employee->role->role_name }}</td>
-
-
-
                     <td class="py-4 px-6 text-right">
                         <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
                                 wire:click="editEmployee({{ $employee->id }})">Edit</button>   

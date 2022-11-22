@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Practice extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'role_name', 
-        'role_description', 
-        'reports_to',
-    ];
+    public function example()
+    {
+        return $this->hasOne(Example::class);
+    }
 }

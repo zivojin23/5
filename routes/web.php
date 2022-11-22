@@ -6,7 +6,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +18,10 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () { return view('welcome'); });
+
+Route::get('/example', function () { return view('example'); })->name('example');
+Route::get('/practice', function () { return view('practice'); });
+
 Route::get('/salary', function () { return view('salary'); })->middleware('auth')->name('salary');
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
@@ -33,3 +36,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+
