@@ -18,16 +18,15 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () { return view('welcome'); });
-
-Route::get('/example', function () { return view('example'); })->name('example');
-Route::get('/practice', function () { return view('practice'); });
-
 Route::get('/salary', function () { return view('salary'); })->middleware('auth')->name('salary');
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/my-projects', [HomeController::class, 'myprojects'])->middleware('auth')->name('my-projects');
 Route::get('/employees', [HomeController::class, 'employees'])->middleware('auth')->name('employees');
 Route::get('/roles', [HomeController::class, 'roles'])->middleware('auth')->name('roles');
+
+Route::get('/country', [HomeController::class, 'countries'])->name('countries');
+Route::get('/city', [HomeController::class, 'cities'])->name('cities');
 
 Route::get('/login', function () { return view('auth.login'); });
 Route::get('/register', function () { return view('auth.register'); });

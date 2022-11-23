@@ -36,4 +36,18 @@ class HomeController extends Controller
             'user'  => Auth::user(),
         ]);
     }
+
+    public function countries()
+    {
+        return view('country', [
+            'user'  => Auth::user(),
+        ]);
+    }
+
+    public function cities()
+    {
+        return view('city', [
+            'user'  => Auth::user(),
+        ]);
+    }
 }

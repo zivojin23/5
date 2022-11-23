@@ -44,7 +44,8 @@
                     <div class="text-3xl flex flex-col">
                         <a class="text-3xl" href="/home">/home</a>
                         <a class="text-3xl" href="/practice">/practice</a>
-                        <a class="text-3xl" href="/example">/example</a>
+                        <a class="text-3xl" href="/country">/country</a>
+                        <a class="text-3xl" href="/city">/city</a>
                     </div>
                     <div>
                         {{-- <iframe frameborder=0 height=100% width=100% src="http://givemenbastreams.com/nba.php?g=cavaliers" 
