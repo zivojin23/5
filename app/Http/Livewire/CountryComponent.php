@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Country;
+use App\Models\City;
 
 class CountryComponent extends Component
 {

@@ -32,7 +32,7 @@
                 <th scope="col" class="py-3 px-6">Country ID</th>
                 <th scope="col" class="py-3 px-6">Name</th>
                 <th scope="col" class="py-3 px-6">Population</th>
-                {{-- <th scope="col" class="py-3 px-6"><span class="sr-only"></span></th> --}}
+                <th scope="col" class="py-3 px-6">Cities</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +43,7 @@
                     {{ $country->id }}</th>
                 <td class="py-4 px-6">{{ $country->name }}</td>
                 <td class="py-4 px-6">{{ $country->pop }}</td>
+                <td class="py-4 px-6">{{ $country->cities }}</td>
 
                 {{-- <td class="py-4 px-6 text-right">
                     <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
