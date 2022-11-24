@@ -39,14 +39,17 @@ class HomeController extends Controller
 
     public function countries()
     {
-        return view('country', [
-            'user'  => Auth::user(),
-        ]);
+        return view('country');
     }
 
     public function cities()
     {
-        return view('city', [
+        return view('city');
+    }
+
+    public function nba()
+    {
+        return view('nba', [
             'user'  => Auth::user(),
         ]);
     }

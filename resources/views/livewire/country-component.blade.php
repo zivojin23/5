@@ -32,7 +32,7 @@
                 <th scope="col" class="py-3 px-6">Country ID</th>
                 <th scope="col" class="py-3 px-6">Name</th>
                 <th scope="col" class="py-3 px-6">Population</th>
-                <th scope="col" class="py-3 px-6">Cities</th>
+                <th scope="col" class="py-3 px-6">Cities with pop</th>
             </tr>
         </thead>
         <tbody>
@@ -43,18 +43,13 @@
                     {{ $country->id }}</th>
                 <td class="py-4 px-6">{{ $country->name }}</td>
                 <td class="py-4 px-6">{{ $country->pop }}</td>
-                <td class="py-4 px-6">{{ $country->cities }}</td>
 
-                {{-- <td class="py-4 px-6 text-right">
-                    <button class="bg-white hover:bg-green-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
-                            wire:click="editEmployee({{ $employee->id }})">Edit</button>   
-                </td>    
-                <td class="py-4 px-6 text-right">        
-                    <button class="bg-white hover:bg-red-200 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow" 
-                            wire:click="deleteEmployee({{ $employee->id }})">Delete</button>
-                </td> --}}
+                @foreach ($country->cities as $city)
+                    <td class="py-4 px-6">{{ $city->city_name }}, {{ $city->city_pop }}</td>
+                @endforeach
+
             </tr>
-         
+    
             @endforeach
         </tbody>
     </table>

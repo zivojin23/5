@@ -32,7 +32,14 @@ class CountryComponent extends Component
 
     public function render()
     {
-        $countries = Country::all();
+        // $cities = City::get();
+
+        // $collection = City::where('country_id', '5')->with('country')->get();
+        // dd($collection->toJson(JSON_PRETTY_PRINT));
+        // exit;
+
+
+        $countries = Country::get();
         return view('livewire.country-component', compact('countries'));
     }
 }
