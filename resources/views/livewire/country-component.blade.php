@@ -44,9 +44,12 @@
                 <td class="py-4 px-6">{{ $country->name }}</td>
                 <td class="py-4 px-6">{{ $country->pop }}</td>
 
-                @foreach ($country->cities as $city)
-                    <td class="py-4 px-6">{{ $city->city_name }}, {{ $city->city_pop }}</td>
-                @endforeach
+                <td class="py-4 px-6">
+                    @foreach ($country->cities as $city)
+                        {{ $city->city_name }}, {{ $city->city_pop }}
+                        <br>
+                    @endforeach
+                </td>
 
             </tr>
     
