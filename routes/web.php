@@ -24,10 +24,10 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/my-projects', [HomeController::class, 'myprojects'])->middleware('auth')->name('my-projects');
 Route::get('/employees', [HomeController::class, 'employees'])->middleware('auth')->name('employees');
 Route::get('/roles', [HomeController::class, 'roles'])->middleware('auth')->name('roles');
-Route::get('/nba', [HomeController::class, 'nba'])->middleware('auth')->name('nba');
 
 Route::get('/country', [HomeController::class, 'countries'])->name('countries');
 Route::get('/city', [HomeController::class, 'cities'])->name('cities');
+Route::get('/nba', [HomeController::class, 'nba'])->name('nba');
 
 Route::get('/login', function () { return view('auth.login'); });
 Route::get('/register', function () { return view('auth.register'); });

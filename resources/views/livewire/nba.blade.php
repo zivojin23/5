@@ -8,7 +8,6 @@
             <th scope="col" class="py-3 px-6">Founded</th>
             <th scope="col" class="py-3 px-6">Conferences</th>
             <th scope="col" class="py-3 px-6">Divisions</th>
-            <th scope="col" class="py-3 px-6">Teams</th>
         </tr>
     </thead>
     <tbody>
@@ -32,13 +31,6 @@
                     <br>
                 @endforeach
             </td>
-
-            {{-- <td class="py-4 px-6">
-                @foreach ($league->teams as $team)
-                    {{ $team->name }}
-                    <br>
-                @endforeach
-            </td> --}}
 
         </tr>
         @endforeach
@@ -121,7 +113,6 @@
         <tr>
             <th scope="col" class="py-3 px-6">Team ID</th>
             <th scope="col" class="py-3 px-6">Name</th>
-            <th scope="col" class="py-3 px-6">nesto</th>
         </tr>
     </thead>
     <tbody>
@@ -130,13 +121,6 @@
             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                 {{ $team->id }}</th>
             <td class="py-4 px-6">{{ $team->name }}</td>
-
-            {{-- <td class="py-4 px-6 block">
-                @foreach ($division->teams as $team)
-                    {{ $team->name }}
-                    <br>
-                @endforeach
-            </td> --}}
 
         </tr>
         @endforeach
