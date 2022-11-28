@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class Movie extends Model
 {
     use HasFactory;
 
     public function players()
     {
-        return $this->hasMany(Player::class);
-    }
-
-    public function division()
-    {
-        return $this->belongsTo(Division::class);
+        return $this->belongsToMany(Player::class, 
+        'movie_player', 
+        'movie_id', 
+        'player_id');
     }
 }
-
-

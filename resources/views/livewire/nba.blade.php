@@ -127,3 +127,39 @@
     </tbody>
 </table>
 </div>
+
+
+
+<div class="w-1/2 mx-auto mb-8">
+    <h2 class="text-3xl font-bold text-gray-700 text-center">TEAMS</h2>
+<table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+            <th scope="col" class="py-3 px-6">Player ID</th>
+            <th scope="col" class="py-3 px-6">Players</th>
+            <th scope="col" class="py-3 px-6">Favorite Movie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($players as $player)    
+        <tr class="bg-white border-b hover:bg-gray-50">
+            
+            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                {{ $player->id }}</th>
+
+            <td>{{ $player->name }}</td>
+
+            @forelse ($player->movies as $movie)
+                <td>{{ $movie->name }}</td>
+            @empty
+                <p>
+                    nothing
+                </p>
+            @endforelse
+            
+
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
